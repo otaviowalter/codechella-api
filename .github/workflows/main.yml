@@ -34,4 +34,5 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
         
     - name: SSH into EC2 instance and update Docker Compose
-      run: echo "${{ secrets.SSH_PASSPHRASE }}" | ssh -o StrictHostKeyChecking=no owalter@34.73.125.176 "cd /home/owalter && docker-compose pull && docker-compose up -d"
+      run: |
+        ssh -o StrictHostKeyChecking=no owalter@34.73.125.176 "cd /home/owalter && docker-compose pull && docker-compose up -d"
